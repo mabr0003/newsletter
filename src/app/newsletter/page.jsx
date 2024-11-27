@@ -11,7 +11,7 @@ async function page() {
         <Newsletter />
         <ul className="grid grid-cols-3 gap-10">
           {subscribers.map((sub) => (
-            <li key={sub.id}>
+            <li key={sub.id} className="border-4 py-10 px-5">
               <Link href={`/newsletter/${sub.id}`}>
                 {sub.name} - {sub.email}
               </Link>

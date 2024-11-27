@@ -30,9 +30,31 @@ export async function postSub(subData) {
 }
 
 export async function getSubsById(id) {
-  const idUrl = `https://rgttvpzuybkglbpbbzib.supabase.co/rest/v1/subscriptions/${id}`;
+  const idUrl = `${url}?id=eq.${id}`;
   let response = await fetch(idUrl, {
     method: "GET",
+    headers: headersList,
+  });
+
+  let data = await response.json();
+  return data;
+}
+
+export async function patchSub(id, subData) {
+  const idUrl = `${url}?id=eq.${id}`;
+  let response = await fetch(idUrl, {
+    method: "PATCH",
+    headers: headersList,
+    body: JSON.stringify(subData),
+  });
+
+  let data = await response.json();
+  return data;
+}
+export async function deleteSub(id) {
+  const idUrl = `${url}?id=eq.${id}`;
+  let response = await fetch(idUrl, {
+    method: "DELETE",
     headers: headersList,
   });
 
